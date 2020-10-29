@@ -6,6 +6,10 @@ def names():
     pattern = "[A-Z]{1}\w+" #"[A-Z]{1}\w+? #name"""
     L = re.findall(pattern, simple_string)
     
+    # or 
+    for item in re.finditer(pattern, simple_string):
+        print(item.group())
+    
     '''    
     words = simple_string.split(" ")
     L = []
