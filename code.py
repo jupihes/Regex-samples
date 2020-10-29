@@ -45,6 +45,12 @@ def grades():
         '''
 
     return L
+
+grades= '''
+Killian Kaufman: B
+Elwood Page: B
+Mukti Patel: A
+Emily Lesch: C'''
 #############################
 import re
 def logs():
@@ -68,3 +74,9 @@ def logs():
             L.append(item.groupdict())
        
     return L 
+
+logdata = """
+32.86.3.51 - - [21/Jun/2019:16:01:59 -0700] "GET /optimize/impactful/sexy/channels HTTP/2.0" 405 18443
+176.68.62.252 - turner3261 [21/Jun/2019:16:02:00 -0700] "GET /viral HTTP/1.1" 405 16692
+35.86.149.61 - zemlak6334 [21/Jun/2019:16:02:01 -0700] "HEAD /incentivize HTTP/2.0" 304 9962
+30.95.91.251 - larson8319 [21/Jun/2019:16:02:02 -0700] "PUT /one-to-one/whiteboard HTTP/1.0" 401 7270"""
