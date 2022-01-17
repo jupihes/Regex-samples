@@ -1,88 +1,209 @@
 # Regex-samples
-My tries on Regex pattern - parser creation
+My tries on Regex in Python
+
+ 
+
+1. Summary cheatsheet 
+2. Some notes on for Persian text
+3. Pattern parser creation
+
+## Cheatsheet
+```
+Character classes
+.	any character except newline
+\w\d\s	word, digit, whitespace
+\W\D\S	not word, digit, whitespace
+[abc]	any of a, b, or c
+[^abc]	not a, b, or c
+[a-g]	character between a & g
+Anchors
+^abc$	start / end of the string
+\b\B	word, not-word boundary
+Escaped characters
+\.\*\\	escaped special characters
+\t\n\r	tab, linefeed, carriage return
+Groups & Lookaround
+(abc)	capture group
+\1	backreference to group #1
+(?:abc)	non-capturing group
+(?=abc)	positive lookahead
+(?!abc)	negative lookahead
+Quantifiers & Alternation
+a*a+a?	0 or more, 1 or more, 0 or 1
+a{5}a{2,}	exactly five, two or more
+a{1,3}	between one & three
+a+?a{2,}?	match as few as possible
+ab|cd	match ab or cd
+```
+
+
+
+Regex in Python
+
+```
+Character classes
+.	any character except newline
+\w\d\s	word, digit, whitespace
+\W\D\S	not word, digit, whitespace
+[abc]	any of a, b, or c
+[^abc]	not a, b, or c
+[a-g]	character between a & g
+Anchors
+^abc$	start / end of the string
+\b\B	word, not-word boundary
+Escaped characters
+\.\*\\	escaped special characters
+\t\n\r	tab, linefeed, carriage return
+Groups & Lookaround
+(abc)	capture group
+\1	backreference to group #1
+(?:abc)	non-capturing group
+(?=abc)	positive lookahead
+(?!abc)	negative lookahead
+Quantifiers & Alternation
+a*a+a?	0 or more, 1 or more, 0 or 1
+a{5}a{2,}	exactly five, two or more
+a{1,3}	between one & three
+a+?a{2,}?	match as few as possible
+ab|cd	match ab or cd
+```
+
+
+
+| Regular Expressions | Description                                              |
+| ------------------- | -------------------------------------------------------- |
+| foo.*               | # Matches any string starting with foo                   |
+| \d*                 | # Match any number decimal digits                        |
+| [a-zA-Z]+           | # Match a sequence of one or more letters                |
+| text                | Match literal text                                       |
+| .                   | Match any character except newline                       |
+| ^                   | Match the start of a string                              |
+| $                   | Match the end of a string                                |
+| *                   | Match 0 or more repetitions                              |
+| +                   | Match 1 or more repetitions                              |
+| ?                   | Match 0 or 1 repetition                                  |
+| +?                  | Match 1 or more, as few as possible                      |
+| *?                  | Match 0 or more, as few as possible                      |
+| {m,n}               | Match m to n repetitions                                 |
+| {m,n}?              | Match m to n repetitions, few as possible                |
+| [...]               | Match a set of characters                                |
+| [^...]              | Match characters, not in a set                           |
+| A \| B              | Match A or B (...) Match regex in parenthesis as a group |
+| \number             | Matches text matched by the previous group               |
+| \A                  | Matches start of the string                              |
+| \b                  | Matches empty string at beginning or end of the word     |
+| \B                  | Matches empty string not at begin or end of the word     |
+| \d                  | Matches any decimal digit                                |
+| \D                  | Matches any non-digit                                    |
+| \s                  | Matches any whitespace                                   |
+| \S                  | Matches any non-whitespace                               |
+| \w                  | Matches any alphanumeric character                       |
+| \W                  | Matches characters not in                                |
+| \w \Z               | Match at end of the string.                              |
+| \\                  | Literal backslash                                        |
+
+
+
+
+
+`Search` vs `match`
+
+​	serach result is None
+
+``` python
+import re
+text = 'john.smith@gmail.com'
+re.search(r'\S+@\S+\.\S+', text)
+d = re.search(r'\S+@\S+\.\S+', text)
+d.span()
+```
+
 
 
 ```python
-import re
-def names():
-    simple_string = """Amy is 5 years old, and her sister Mary is 2 years old. 
-    Ruth and Peter, their parents, have 3 kids."""
-    
-    pattern = "[A-Z]{1}\w+" #"[A-Z]{1}\w+? #name"""
-    L = re.findall(pattern, simple_string)
-    
-    # or 
-    for item in re.finditer(pattern, simple_string):
-        print(item.group())
-    
-    '''    
-    words = simple_string.split(" ")
-    L = []
-    for i in words:
-        if (i.istitle() and not i.isspace()):
-            print(i)
-            L.append(i)
-    #print(len(L))
-        return L 
-    '''
-    
-    return L
+text1 = 'john.smithgmail.com'
+d = re.search(r'\S+@\S+\.\S+', text1)
+d
+d == None
+Out[14]: True
 
-#############################
-import re
-def grades():
-    with open ("assets/grades.txt", "r") as file:
-        grades = file.read()
-        
-        L = []
-        pattern = "([A-Z]{1}\w+ [A-Z]{1}\w+)(: )(\w)"  
-        for i in re.finditer(pattern, grades):
-            #print(i[3])
-            if i[3] == 'B':
-                L.append(i[1])
-        '''
-        lines = grades.split("\n")
-        L = []
-        for i in lines:
-            if (i.split(": ")[1])[0] == 'B':
-                L.append(i.split(": ")[0])
-        #print(L, len(L))
-        '''
-
-    return L
-
-grades= '''
-Killian Kaufman: B
-Elwood Page: B
-Mukti Patel: A
-Emily Lesch: C'''
-#############################
-import re
-def logs():
-    with open("assets/logdata.txt", "r") as file:
-        logdata = file.read()
-    
-        pattern = """
-        (?P<host>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})    #host
-        (\s\-\s)    # seperator
-        (?P<user_name>\-|\w{5,18})    #user_name
-        (\s\[)    # seperator
-        (?P<time>\S+\s-\d{4})    #time
-        (\]\s\")    # seperator
-        (?P<request>.+?)    #request
-        (\"\s)(.+?$)    # end part which is not important       """
-
-        L = []
-        for item in re.finditer(pattern, logdata, re.VERBOSE|re.MULTILINE):
-
-            #print(item.groupdict())
-            L.append(item.groupdict())
-       
-    return L 
-
-logdata = """
-32.86.3.51 - - [21/Jun/2019:16:01:59 -0700] "GET /optimize/impactful/sexy/channels HTTP/2.0" 405 18443
-176.68.62.252 - turner3261 [21/Jun/2019:16:02:00 -0700] "GET /viral HTTP/1.1" 405 16692
-35.86.149.61 - zemlak6334 [21/Jun/2019:16:02:01 -0700] "HEAD /incentivize HTTP/2.0" 304 9962
-30.95.91.251 - larson8319 [21/Jun/2019:16:02:02 -0700] "PUT /one-to-one/whiteboard HTTP/1.0" 401 7270"""
 ```
+
+Note `None` versus `0` in your coding!
+
+```python
+text = 'Let’s say that we flipped 100 coins and observed 70 heads. We would like to use these data to test the hypothesis that the true probability is 0.5. First let’s generate our data, simulating 100,000 sets of 100 flips. We use such a large number because it turns out that it’s very rare to get 70 heads, so we need many attempts in order to get a reliable estimate of these probabilties. This will take a couple of minutes to complete.'
+
+re.findall(r'(\d+)',text)
+Out[16]: ['100', '70', '0', '5', '100', '000', '100', '70']
+```
+
+
+
+findall
+
+subs
+
+```
+text = 'salam jadi. salam ali. salam hesam. salam sara. salam baba.'
+
+re.sub(r'[sS]alam (\w+)\.','Hi',text)
+Out[18]: 'Hi Hi Hi Hi Hi'
+
+re.sub(r'[sS]alam (\w+)\.','Hi \g<1>',text)
+Out[19]: 'Hi jadi Hi ali Hi hesam Hi sara Hi baba'
+
+re.sub(r'[sS]alam (\w+)\.','Hi \g<1>.',text)
+Out[20]: 'Hi jadi. Hi ali. Hi hesam. Hi sara. Hi baba.'
+
+re.sub(r'[sS]alam (\w+)\.','Hi \g<0>.',text)
+Out[21]: 'Hi salam jadi.. Hi salam ali.. Hi salam hesam.. Hi salam sara.. Hi salam baba..'
+```
+
+
+
+چرا کار نمیکنه؟
+
+```
+re.sub(r'[sS]alam (( \w)(\w+)\.)','Hi \g<1>.',text)
+Out[29]: 'salam jadi. salam ali. salam hesam. salam sara. salam baba.'
+```
+
+
+
+str = 'students for passing the exam must have more than 15 grade.'
+result = re.findall(r'a*',str)
+print(result.count('a') + result.count(''))
+60
+
+```
+re.compile("^b"))
+```
+
+
+
+Persian alephba `[آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی]` or 
+
+Persian \d `[\u06F0-\u06F9]`   or `[۰۱۲۳۴۵۶۷۸۹]` `[۰۱۲۳۴۵۶۷۸۹]` 
+
+\u0645\u062F\u0644 = مدل
+
+[\u060C|\u066C|\u066B]
+
+
+
+
+
+pattern match
+
+https://stackoverflow.com/questions/45315753/regex-ignore-part-of-the-string-in-matches 
+
+```python
+import re
+text = '["warn-error-fatal-failure-exception-ok","parsefailure","anothertag","syslog-warn-error-fatal-failure-exception-ok"]'
+
+regex_pat = '''(?<!warn-error-fatal-)failure(?!-exception-ok),
+
+'''
+```
+
