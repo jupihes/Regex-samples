@@ -1,11 +1,10 @@
-# Regex-samples
+# My Regex notes and samples
 My tries on Regex in Python
-
  
 
 1. Summary cheatsheet 
 2. Some notes on for Persian text
-3. Pattern parser creation
+3. [Pattern parser creation](https://github.com/jupihes/Regex-samples/blob/main/code.py)
 
 ## Cheatsheet
 ```
