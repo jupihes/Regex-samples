@@ -193,7 +193,7 @@ Persian \d `[\u06F0-\u06F9]`   or `[۰۱۲۳۴۵۶۷۸۹]` `[۰۱۲۳۴۵۶۷۸�
 
 
 
-pattern match
+## pattern match
 
 https://stackoverflow.com/questions/45315753/regex-ignore-part-of-the-string-in-matches 
 
@@ -205,4 +205,6 @@ regex_pat = '''(?<!warn-error-fatal-)failure(?!-exception-ok),
 
 '''
 ```
+
+For more detailed, check [detailed example](https://github.com/jupihes/Regex-samples/blob/main/code.py)
 
