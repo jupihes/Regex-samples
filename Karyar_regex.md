@@ -53,8 +53,11 @@ pattern = r'\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 pattern = IR_TRUNCATE_POOL\d_\d{8}_[a-zA-Z0-9]+.csv
+pattern = IR_TRUNCATE_POOL\d_\d{8}_[a-zA-Z0-9_]+.csv
+pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 
+pattern = r'IR_TRUNCATE_POOL\d{1}_\d{8}_\w+(?<![_.\ ]).csv'
 ```
 
 ### what if `date` part contains `time` as well
