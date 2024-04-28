@@ -58,7 +58,12 @@ pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 
 pattern = r'IR_TRUNCATE_POOL\d{1}_\d{8}_\w+(?<![_.\ ]).csv'
+pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\w*(?<![._ ]).csv'
 ```
+
+#### Negative Lookbehind  (?<!...)
+Ensures that the given pattern would not match and end at the current position in the expression. The pattern must have a fixed width. Does not consume characters.
+
 
 ### what if `date` part contains `time` as well
 
