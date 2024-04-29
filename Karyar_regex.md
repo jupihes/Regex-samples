@@ -69,7 +69,7 @@ pattern = r'IR_TRUNCATE_POOL\d{1}_\d{8}_\w+(?<![_.\ ]).csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\w*(?<![._ ]).csv'
 ```
 
-#### 
+#### Negative Lookahead
 
 (?!...)
 Starting at the current position in the expression, ensures that the given pattern will not match. Does not consume characters.
