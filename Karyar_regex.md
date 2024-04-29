@@ -64,6 +64,33 @@ pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\w*(?<![._ ]).csv'
 #### Negative Lookbehind  (?<!...)
 Ensures that the given pattern would not match and end at the current position in the expression. The pattern must have a fixed width. Does not consume characters.
 
+```python
+pattern = r'IR_TRUNCATE_POOL\d{1}_\d{8}_\w+(?<![_.\ ]).csv'
+pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\w*(?<![._ ]).csv'
+```
+
+#### 
+
+(?!...)
+Starting at the current position in the expression, ensures that the given pattern will not match. Does not consume characters.
+
+```python
+pattern = r'(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?![a-zA-Z0-9_.])'
+
+http://94.182.130.251
+http://94.182.130.238
+http://94.182.130.248
+http://94.182.130.246
+http://195.213.236.87.mail.iranianwebman.ir
+http://14.214.236.87.mail.iranianwebman.ir
+http://129.214.236.87.mail.iranianwebman.ir
+http://185.141.107.200
+http://185.120.221.156
+http://185.120.221.154
+http://185.67.101.14
+http://5.160.219.190
+http://195.181.39.125
+```
 
 ### what if `date` part contains `time` as well
 
