@@ -45,21 +45,23 @@ files = [
 
 ### find `.csv` files with `IR_TRUNCATE` at start filename and datetime
 
-
-
 ```python
 pattern = r'.csv'
 pattern = r'\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
-pattern = IR_TRUNCATE_POOL\d_\d{8}_[a-zA-Z0-9]+.csv
-pattern = IR_TRUNCATE_POOL\d_\d{8}_[a-zA-Z0-9_]+.csv
+pattern = r'IR_TRUNCATE_POOL\d_\d{8}_[a-zA-Z0-9]+.csv'
+pattern = r'IR_TRUNCATE_POOL\d_\d{8}_[a-zA-Z0-9_]+.csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\S+.csv'
 
 pattern = r'IR_TRUNCATE_POOL\d{1}_\d{8}_\w+(?<![_.\ ]).csv'
 pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\w*(?<![._ ]).csv'
 ```
+
+
+<table "="" border="0" style="table-layout:fixed;"><tbody><tr><th class="w100" scope="col"><b>Lookaround</b></th><th class="w180" scope="col"><b>Name</b></th><th class="w320" scope="col"><b>What it Does</b></th></tr><tr class="brown"><td><span class="mono">(?=foo)</span></td><td>Lookahead</td><td>Asserts that what immediately follows the current position in the string is <i>foo</i></td></tr><tr class="beige"><td><span class="mono">(?&lt;=foo)</span></td><td>Lookbehind</td><td>Asserts that what immediately precedes the current position in the string is <i>foo</i></td></tr><tr class="brown"><td><span class="mono">(?!foo)</span></td><td>Negative Lookahead</td><td>Asserts that what immediately follows the current position in the string is not <i>foo</i></td></tr><tr class="beige"><td><span class="mono">(?&lt;!foo)</span></td><td>Negative Lookbehind</td><td>Asserts that what immediately precedes the current position in the string is not <i>foo</i></td></tr></tbody></table>
+[regex-lookarounds](https://www.rexegg.com/regex-lookarounds.html)
 
 #### Negative Lookbehind  (?<!...)
 Ensures that the given pattern would not match and end at the current position in the expression. The pattern must have a fixed width. Does not consume characters.
@@ -91,6 +93,17 @@ http://185.67.101.14
 http://5.160.219.190
 http://195.181.39.125
 ```
+
+### Password sample
+ - We need a password that must meet four below conditions:
+   
+   1. The password must have between six - 6 and ten 10 word characters 
+   2. It must include at least one lowercase character
+   3. It must include at least three uppercase characters
+   4. It must include at least one digit
+
+[regex-lookarounds](https://www.rexegg.com/regex-lookarounds.html)
+
 
 ### what if `date` part contains `time` as well
 
