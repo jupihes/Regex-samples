@@ -104,6 +104,26 @@ http://195.181.39.125
 
 [regex-lookarounds](https://www.rexegg.com/regex-lookarounds.html)
 
+[regex-disambiguation](https://www.rexegg.com/regex-disambiguation.html)
+
+finding what exists in parantesis is example :) 
+   - Lookahead and Lookbehind: `(?= … )`, `(?! … )`, `(?<= … ), (?<! … )`
+   - Non-Capturing Groups: `(?: … )` and `(?is: … )`
+   - Atomic Groups: `(?> … )`
+   - Named Capture: `(?<foo> … )` and `(?P<foo> … )`
+   - Inline Modifiers: `(?isx-m)`
+   - Subroutines: `(?1)`
+   - Recursion: `(?R)`
+   - Conditionals: `(?(A)B)` and `(?(A)B|C)`
+   - Pre-Defined Subroutines: `(?(DEFINE)(<foo> … )(<bar> … ))` and `(?&foo)`
+   - Branch Reset: `(?| … )`
+   - Inline Comments: `(?# … )`
+   - Code Capsule: `(?{…})`
+   - PCRE Callouts: `(?C…)`
+   - Version Check: `(?(VERSION>=x) … )`
+   - Ignore ALL Unescaped Whitespace: `(?xx)`
+   - Disable auto-capture: `(?n)`
+
 
 ### what if `date` part contains `time` as well
 
@@ -120,8 +140,10 @@ files = [
 
 
 
+### REGEX in SQL, Pandas, Linux Shell, Perl
 
-
+#### SQL
+- Check the specific `SQL` document you are using 
 ```sql
 select 
 regexp_extract(regexp_extract(CUS_FILE_NAME, 'part_(.*?\.csv)', 1),'MKT_WHITELIST_POOL_(.*?)_(.*?)_(.*?).csv$',1) as dateKey,
