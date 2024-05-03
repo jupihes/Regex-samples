@@ -1,6 +1,17 @@
 # Karyar string processing and regex
 
+### The Many Uses of Regex, i.e. [Situations where Regex can Save the Day](https://www.rexegg.com/regex-uses.html)
+Here are some of the thing regular expressions can help you do.
 
+1. Grabbing text in files or validating text input when programming in languages such as `C`, `Java` or `PHP`.
+2. Searching (and possibly replacing) text in files when using an advanced text editor such as EditPad Pro and `Notepad++` on Windows (or TextWrangler / BBEdit on OSX), a standalone replace tool such as ABA Replace, or good old grep (the linked page has the best command-line grep for Windows).
+3. Searching and replacing across pages of code when using in an IDE such as Visual Studio, Komodo IDE or even Dreamweaver's crippled ECMAScript flavor.
+4. For advanced search and replace when using creativity software such as Adobe Indesign.
+5. Renaming a hundred files at a time in an advanced file manager such as Directory Opus or a renamer such as PFrank (Win) or A Better Finder Rename (OSX).
+6. Searching from the command line using `Perl` one-liners and utilities such as `grep`, `sed` and `awk`.
+7. Finding records in a database.
+8. Telling `Apache` how to behave with certain `IP addresses`, `urls` or browsers, in htaccess for instance.
+9. Helping you while away the tedious afternoon office hours by exchanging regex challenges with your colleagues. 
 
 sample
 ```python
@@ -60,7 +71,10 @@ pattern = r'IR_TRUNCATE_POOL\d_\d{8}_\w*(?<![._ ]).csv'
 ```
 
 
-<table "="" border="0" style="table-layout:fixed;"><tbody><tr><th class="w100" scope="col"><b>Lookaround</b></th><th class="w180" scope="col"><b>Name</b></th><th class="w320" scope="col"><b>What it Does</b></th></tr><tr class="brown"><td><span class="mono">(?=foo)</span></td><td>Lookahead</td><td>Asserts that what immediately follows the current position in the string is <i>foo</i></td></tr><tr class="beige"><td><span class="mono">(?&lt;=foo)</span></td><td>Lookbehind</td><td>Asserts that what immediately precedes the current position in the string is <i>foo</i></td></tr><tr class="brown"><td><span class="mono">(?!foo)</span></td><td>Negative Lookahead</td><td>Asserts that what immediately follows the current position in the string is not <i>foo</i></td></tr><tr class="beige"><td><span class="mono">(?&lt;!foo)</span></td><td>Negative Lookbehind</td><td>Asserts that what immediately precedes the current position in the string is not <i>foo</i></td></tr></tbody></table>
+<table "="" border="0" style="table-layout:fixed;">
+   <tbody><tr><th class="w100" scope="col"><b>Lookaround</b></th><th class="w180" scope="col"><b>Name</b></th><th class="w320" scope="col"><b>What it Does</b></th></tr><tr class="brown"><td><span class="mono">(?=foo)</span></td><td>Lookahead</td><td>Asserts that what immediately follows the current position in the string is <i>foo</i></td></tr><tr class="beige"><td><span class="mono">(?&lt;=foo)</span></td><td>Lookbehind</td><td>Asserts that what immediately precedes the current position in the string is <i>foo</i></td></tr><tr class="brown"><td><span class="mono">(?!foo)</span></td><td>Negative Lookahead</td><td>Asserts that what immediately follows the current position in the string is not <i>foo</i></td></tr><tr class="beige"><td><span class="mono">(?&lt;!foo)</span></td><td>Negative Lookbehind</td><td>Asserts that what immediately precedes the current position in the string is not <i>foo</i></td></tr>
+   </tbody>
+</table>
 [regex-lookarounds](https://www.rexegg.com/regex-lookarounds.html)
 
 #### Negative Lookbehind  (?<!...)
@@ -106,7 +120,7 @@ http://195.181.39.125
 
 [regex-disambiguation](https://www.rexegg.com/regex-disambiguation.html)
 
-finding what exists in parantesis is example :) 
+
    - Lookahead and Lookbehind: `(?= … )`, `(?! … )`, `(?<= … ), (?<! … )`
    - Non-Capturing Groups: `(?: … )` and `(?is: … )`
    - Atomic Groups: `(?> … )`
@@ -124,6 +138,28 @@ finding what exists in parantesis is example :)
    - Ignore ALL Unescaped Whitespace: `(?xx)`
    - Disable auto-capture: `(?n)`
 
+Finding what exists in parantesis is example :) 
+```python
+pattern1 = r'\(\S+\)'
+```
+What is better?
+ 
+   - Lookahead and Lookbehind: (?= … ), (?! … ), (?<= … ), (?<! … )
+   - Non-Capturing Groups: (?: … ) and (?is: … )
+   - Atomic Groups: (?> … )
+   - Named Capture: (?<foo> … ) and (?P<foo> … )
+   - Inline Modifiers: (?isx-m)
+   - Subroutines: (?1)
+   - Recursion: (?R)
+   - Conditionals: (?(A)B) and (?(A)B|C)
+   - Pre-Defined Subroutines: (?(DEFINE)(<foo> … )(<bar> … )) and (?&foo)
+   - Branch Reset: (?| … )
+   - Inline Comments: (?# … )
+   - Code Capsule: (?{…})
+   - PCRE Callouts: (?C…)
+   - Version Check: (?(VERSION>=x) … )
+   - Ignore ALL Unescaped Whitespace: (?xx)
+   - Disable auto-capture: (?n)
 
 ### what if `date` part contains `time` as well
 
