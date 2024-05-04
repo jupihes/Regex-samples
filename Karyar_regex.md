@@ -175,6 +175,19 @@ files = [
 ```
 
 
+### Data preprocessing and cleaning with regex
+- Logfiles, events, traces, configuration file, dumps
+- Webscraping
+  
+   - log analysis tools
+      - Open source
+        
+      - Propriotry
+         - (Splunk)[https://www.splunk.com/]
+           ![](/images/Splunk_tool.png)
+
+
+
 
 ### REGEX in SQL, Pandas, Linux Shell, Perl
 
