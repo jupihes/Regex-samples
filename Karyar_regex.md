@@ -175,22 +175,40 @@ files = [
 ```
 
 
+### sample logs
+
+- [Syslog log sample](https://techdocs.broadcom.com/us/en/symantec-security-software/information-security/symantec-cloudsoc/cloud/audit-home/barracuda-home/log-formats/syslog-log-sample.html)
+> `Tue Mar 04 15:57:06 2020: <14>Mar  4 15:53:03 BAR-NG-VF500 BAR-NG-VF500/box_Firewall_Activity:  Info     BAR-NG-VF500 Remove: type=FWD|proto=UDP|srcIF=eth1|srcIP=192.168.70.7|srcPort=35119|srcMAC=08:00:27:da:d7:9c|dstIP=8.8.8.8|dstPort=53|dstService=domain|dstIF=eth0|rule=InternetAccess/<App>:RestrictTim|info=Balanced Session Idle Timeout|srcNAT=192.168.70.7|dstNAT=8.8.8.8|duration=21132|count=1|receivedBytes=130|sentBytes=62|receivedPackets=1|sentPackets=1|user=|protocol=|application=|target=|content=|urlcat`
+
+> `Tue Mar 04 15:57:06 2020: <14>Mar  4 15:53:03 BAR-NG-VF500 BAR-NG-VF500/srv_S1_NGFW:  Info     BAR-NG-VF500 State:          REM(Balanced Session Idle Timeout,20) FWD UDP 192.168.70.7:35119 () -> 8.8.8.8:53`
+
+> `Tue Mar 04 15:57:06 2020: <14>Mar  4 15:53:03 BAR-NG-VF500 BAR-NG-VF500/box_Firewall_audit:  Info     BAR-NG-VF500 1393928583|Remove:|FWD|eth1|UDP|InternetAccess/<App>:RestrictTim|192.168.70.7|35119|8.8.8.8|53|domain|2001|Balanced Session Idle Timeout|192.168.70.7|35119|8.8.8.8|53|eth0|08:00:27:da:d7:9c|62|1|130|1|21132|590`
+
+> `Tue Mar 04 15:57:06 2020: <15>Mar  4 15:53:03 BAR-NG-VF500 BAR-NG-VF500/srv_S1_URL_Cofsd:  Internal BAR-NG-VF500 cofsd: [0000000] 5 DEBUG OF: Generic HTTP Transfer: 6.53%: Download starts in 171 seconds`
+
+> `Tue Mar 04 15:57:06 2020: <14>Mar  4 15:53:04 BAR-NG-VF500 BAR-NG-VF500/box_Firewall_Activity:  Info     BAR-NG-VF500 Remove: type=FWD|proto=UDP|srcIF=eth1|srcIP=192.168.70.7|srcPort=38686|srcMAC=08:00:27:da:d7:9c|dstIP=8.8.8.8|dstPort=53|dstService=domain|dstIF=eth0|rule=InternetAccess/<App>:RestrictTim|info=Session Idle Timeout|srcNAT=192.168.70.7|dstNAT=8.8.8.8|duration=60100|count=1|receivedBytes=0|sentBytes=62|receivedPackets=0|sentPackets=1|user=|protocol=|application=|target=|content=|urlcat=`
+
+
 ### Data preprocessing and cleaning with regex
 - Logfiles, events, traces, configuration file, dumps
 - Webscraping
   
-   - log analysis tools
+   - log analysis and managment tools
       - Open source
-        
+         -  
+         - fluentd
+            ![fluentd](https://www.fluentd.org/images/fluentd-architecture.png)
       - Propriotry
          - (Splunk)[https://www.splunk.com/]
            ![](/images/Splunk_tool.png)
 
 
-
-
+### Sample online logfiles for investigation
+[loghub](https://github.com/logpai/loghub)
 ### REGEX in SQL, Pandas, Linux Shell, Perl
-
+#### Pandas
+- On series for `str` type column,
+  
 #### SQL
 - Check the specific `SQL` document you are using 
 ```sql
@@ -200,7 +218,13 @@ regexp_extract(regexp_extract(CUS_FILE_NAME, 'part_(.*?\.csv)', 1),'MKT_WHITELIS
 regexp_extract(regexp_extract(CUS_FILE_NAME, 'part_(.*?\.csv)', 1),'MKT_WHITELIST_POOL_(.*?)_(.*?)_(.*?).csv$',3) as partnumber
 from DATAINGEST.TZ_MKT_FILE_SRC_WHITELIST_POOL
 ```
+#### Linux Shell
+- `grep`
+#### Perl
 
+### Regex for Persian language
+- utf8 encoding
+- [Regex.Persian.Language](https://github.com/mirhmousavi/Regex.Persian.Language)
 
 
 
