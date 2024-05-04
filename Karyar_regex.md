@@ -189,6 +189,8 @@ files = [
 > `Tue Mar 04 15:57:06 2020: <14>Mar  4 15:53:04 BAR-NG-VF500 BAR-NG-VF500/box_Firewall_Activity:  Info     BAR-NG-VF500 Remove: type=FWD|proto=UDP|srcIF=eth1|srcIP=192.168.70.7|srcPort=38686|srcMAC=08:00:27:da:d7:9c|dstIP=8.8.8.8|dstPort=53|dstService=domain|dstIF=eth0|rule=InternetAccess/<App>:RestrictTim|info=Session Idle Timeout|srcNAT=192.168.70.7|dstNAT=8.8.8.8|duration=60100|count=1|receivedBytes=0|sentBytes=62|receivedPackets=0|sentPackets=1|user=|protocol=|application=|target=|content=|urlcat=`
 
 
+![](https://camo.githubusercontent.com/19b839fbb5d21ae486cef3d3a5788aa844ec1453aabdbd728cf40a7a31715a0e/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f6c6f677061692f6c6f67706172736572406d61696e2f646f63732f696d672f6578616d706c652e6a7067)
+
 ### Data preprocessing and cleaning with regex
 - Logfiles, events, traces, configuration file, dumps
 - Webscraping
