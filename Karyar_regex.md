@@ -175,7 +175,15 @@ files = [
 ```
 
 
-### sample logs
+### Log file
+
+- What is log file?
+   - In computing, syslog /ˈsɪslɒɡ/ is a standard for message logging. It allows separation of the software that generates messages, the system that stores them, and the software that reports and analyzes them. Each message is labeled with a facility code, indicating the type of system generating the message, and is assigned a severity level. 
+   [Syslog](https://en.wikipedia.org/wiki/Syslog)
+   - Why to have such?
+      - Know who did what and when
+      -      
+- sample logs
 
 - [Syslog log sample](https://techdocs.broadcom.com/us/en/symantec-security-software/information-security/symantec-cloudsoc/cloud/audit-home/barracuda-home/log-formats/syslog-log-sample.html)
 > `Tue Mar 04 15:57:06 2020: <14>Mar  4 15:53:03 BAR-NG-VF500 BAR-NG-VF500/box_Firewall_Activity:  Info     BAR-NG-VF500 Remove: type=FWD|proto=UDP|srcIF=eth1|srcIP=192.168.70.7|srcPort=35119|srcMAC=08:00:27:da:d7:9c|dstIP=8.8.8.8|dstPort=53|dstService=domain|dstIF=eth0|rule=InternetAccess/<App>:RestrictTim|info=Balanced Session Idle Timeout|srcNAT=192.168.70.7|dstNAT=8.8.8.8|duration=21132|count=1|receivedBytes=130|sentBytes=62|receivedPackets=1|sentPackets=1|user=|protocol=|application=|target=|content=|urlcat`
@@ -210,6 +218,8 @@ files = [
 - We take [Apache](https://zenodo.org/records/8196385/files/Apache.tar.gz?download=1) 	under 📂 `Server applications` section:
 
 > [Apache](https://zenodo.org/records/8196385/files/Apache.tar.gz?download=1) 	Apache web server error log 		263.9 days 	56,481 	4.90MB 
+
+
 
 ```text
 [Thu Jun 09 06:07:04 2005] [notice] LDAP: Built with OpenLDAP LDAP SDK
@@ -272,6 +282,11 @@ from DATAINGEST.TZ_MKT_FILE_SRC_WHITELIST_POOL
 #### Linux Shell
 - `grep`
 #### Perl
+[sample available documentation with regex](https://docs.fluentd.org/parser/nginx)
+```perl
+expression /^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<code>[^ ]*) (?<size>[^ ]*)(?: "(?<referer>[^\"]*)" "(?<agent>[^\"]*)"(?:\s+(?<http_x_forwarded_for>[^ ]+))?)?$/
+time_format %d/%b/%Y:%H:%M:%S %z
+```
 
 ### Regex for Persian language
 - utf8 encoding
