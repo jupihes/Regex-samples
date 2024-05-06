@@ -529,3 +529,13 @@ Afternoon (3 hours)
 
 
 https://python-course.eu/advanced-python/advanced-regular-expressions.php
+
+
+### Project
+
+With help of Python code like [Web link](https://github.com/jupihes/File-size-summarization), get list of whole files and their address of a directory like `D:\`
+1. Develop a `regex` to extract all
+    - `D:\Folder1`
+    - `D:\Folder1\Sub_Folder2`      
+2. Clean and remove duplicate and store results as '.xlsx' file     
+
