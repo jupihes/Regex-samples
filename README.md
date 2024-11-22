@@ -105,9 +105,9 @@ ab|cd	match ab or cd
 
 
 
-`Search` vs `match`
+- Difference between `Search` and `match`
 
-​	serach result is None
+​	   - if pattern not matched in `search` $\to$ result is `None`
 
 ``` python
 import re
