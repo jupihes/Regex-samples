@@ -208,3 +208,8 @@ regex_pat = '''(?<!warn-error-fatal-)failure(?!-exception-ok),
 
 For more detailed, check [detailed example](https://github.com/jupihes/Regex-samples/blob/main/code.py)
 
+
+
+### Webscraping flow
+
+![](webscraping.svg)
